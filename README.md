@@ -10,8 +10,8 @@ voidpass has two main features:
 # Dependencies
 
 - Dart 2.7.1
-- [encrypt] (https://pub.dev/packages/encrypt)
-- [crypto] (https://pub.dev/packages/crypto)
+- [encrypt](https://pub.dev/packages/encrypt)
+- [crypto](https://pub.dev/packages/crypto)
 
 # Build the CLI
 
