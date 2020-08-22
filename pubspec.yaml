@@ -1,0 +1,8 @@
+name: voidpass
+description: A password manager 
+version: 0.0.1
+author: f-prime
+
+dependencies:
+  crypto: ^2.0.6
+  encrypt: ^4.0.2

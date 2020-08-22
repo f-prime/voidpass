@@ -1,0 +1,5 @@
+*.sw[a-z]
+voidpass
+*.exe
+.packages
+.dart_tool
