@@ -1,5 +1,6 @@
 *.sw[a-z]
 voidpass
+voidpass.db
 *.exe
 .packages
 .dart_tool

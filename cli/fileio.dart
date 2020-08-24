@@ -22,8 +22,10 @@ File Structure
 
 */
 
+const String PASSWORD_DB = "voidpass.db";
+
 Future<Map> loadFile() async {
-  final File dataFile = File("voidpass.db");
+  final File dataFile = File(PASSWORD_DB);
   if (!await dataFile.exists()) {
     return {};
   }
@@ -32,7 +34,7 @@ Future<Map> loadFile() async {
 }
 
 Future<void> saveFile(Map data) async {
-  final File dataFile = File("data.json");
+  final File dataFile = File(PASSWORD_DB);
   dataFile.writeAsString(json.encode(data));
 }
 
