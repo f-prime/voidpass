@@ -27,16 +27,20 @@ void execSearch() async {
     value.forEach((item) {
       final String username = item["username"];
       final String searchable = "${key} ${username}";
+      final int length = item["length"] ?? -1;
+      final String generated =
+          item["isGenerated"] ? "is not saved" : "is saved";
 
       if (searchable.indexOf(search) > -1) {
-        results.add(username);
+        results.add([username, length, generated]);
       }
     });
 
     if (results.length > 0) {
       print("${key}:");
       print("  usernames:");
-      results.forEach((username) => print("    ${username}"));
+      results.forEach((lineInfo) =>
+          print("    ${lineInfo[0]} (${lineInfo[2]}) (${lineInfo[1]})"));
     }
   });
 }
@@ -101,16 +105,12 @@ void execRetrieve() async {
           final bool punctuation = item["punctuation"];
           final int length = item["length"];
 
-          password = createPassword(
-            username, 
-            website, 
-            masterPassword,
-            uppercase: uppercase,
-            lowercase: lowercase,
-            digits: digits,
-            punctuation: punctuation,
-            length: length
-          );
+          password = createPassword(username, website, masterPassword,
+              uppercase: uppercase,
+              lowercase: lowercase,
+              digits: digits,
+              punctuation: punctuation,
+              length: length);
         } else {
           password = decryptPassword(item["cipherText"], masterPassword);
         }
@@ -145,8 +145,9 @@ void execList() async {
     value.forEach((item) {
       final String username = item["username"];
       final String isSaved = !item["isGenerated"] ? "is" : "is not";
+      final int length = item["length"] ?? -1;
 
-      print("    ${username} (${isSaved} saved)");
+      print("    ${username} (${isSaved} saved) ($length)");
     });
   });
 }
