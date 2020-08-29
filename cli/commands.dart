@@ -87,6 +87,12 @@ void execRetrieve() async {
   final String username = input("Username: ").trim();
   final String website = input("Website: ").trim();
   final String masterPassword = input("Master Password: ", hidden: true);
+  final String confirmPassword = input("Confirm Master: ", hidden: true);
+
+  if(masterPassword != confirmPassword) {
+    print("Passwords did not match.");
+    return;
+  }
 
   final Map data = await loadFile();
 
@@ -156,6 +162,13 @@ void execAdd() async {
   final String username = input("Username: ").trim();
   final String website = input("Website: ").trim();
   final String masterPassword = input("Master Password: ", hidden: true);
+  final String confirmPassword = input("Confirm Master: ", hidden: true);
+
+  if(masterPassword != confirmPassword) {
+    print("Passwords did not match.");
+    return;
+  }
+
   final String password = input("Password: ", hidden: true);
 
   if (username.length == 0) {
@@ -194,6 +207,13 @@ void execGenerate() async {
   final String username = input("Username: ");
   final String website = input("Website: ");
   final String masterPassword = input("Master Password: ", hidden: true);
+  final String confirmPassword = input("Confirm Master: ", hidden: true);
+
+  if(masterPassword != confirmPassword) {
+    print("Passwords did not match.");
+    return;
+  }
+
   final bool digits =
       input("Include digits?[yes]: ").toLowerCase().trim() != "no";
   final bool uppercase =
